@@ -7,8 +7,10 @@ MCP_CAN CAN(spiCSPin);
 
 void setup()
 {
-    Serial.begin(9600);
+    Serial.begin(115200);
+    while(!Serial);
     Serial.println("Serial Comm Initialised");
+    
     for(int i=1;i<=18;i++)
     {
         Serial.print("Trying CAN Configuration: ");
