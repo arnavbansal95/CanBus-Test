@@ -15,11 +15,14 @@ void setup()
     {
         Serial.print("Trying CAN Configuration: ");
         Serial.println(i);
-        if((CAN_OK == CAN.begin(i)) && (CAN_Init == false))
+        if(!CAN_Init)
         {
-            Serial.print("CAN Initialised at: ");
-            Serial.println(i);
-            CAN_Init = true;
+            if(CAN_OK == CAN.begin(i)
+            {
+                Serial.print("CAN Initialised at: ");
+                Serial.println(i);
+                CAN_Init = true;
+            }
         }
         delay(500);
     }
