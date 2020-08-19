@@ -11,6 +11,8 @@ void setup()
     Serial.println("Serial Comm Initialised");
     for(int i=1;i<=18;i++)
     {
+        Serial.print("Trying CAN Configuration: ");
+        Serial.println(i);
         if((CAN_OK == CAN.begin(i)) && (CAN_Init == false))
         {
             Serial.print("CAN Initialised at: ");
@@ -41,7 +43,7 @@ void loop()
             Serial.print("Get data from ID: 0x");
             Serial.println(canId, HEX);
 
-            for (int i = 0; i < len; i++)           // print the data 
+            for(int i=0;i<len;i++)                  // print the data 
             { 
                 Serial.print(buf[i], HEX);
                 Serial.print("\t");
