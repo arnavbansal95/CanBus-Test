@@ -13,12 +13,13 @@ void setup()
     Serial.print("Trying CAN Configuration: CAN_5KBPS");
     if(!CAN_Init)
     {
-        if(CAN_OK == CAN.begin(CAN_5KBPS))
+        while(CAN_OK != CAN.begin(CAN_5KBPS))
         {
-            Serial.print("CAN Initialised at: ");
-            Serial.println(i);
-            CAN_Init = true;
+            delay(10);
         }
+        Serial.print("CAN Initialised at: ");
+        Serial.println(i);
+        CAN_Init = true;
     }
     if(!CAN_Init)
     {
