@@ -21,7 +21,7 @@ void setup()
     }
     if(!CAN_Init)
     {
-        Serial.println("CAN BUS Shield Init OK!");
+        Serial.println("CAN Initialised Failed!");
     }
 }
 
