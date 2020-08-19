@@ -21,31 +21,32 @@ void setup()
             Serial.println(i);
             CAN_Init = true;
         }
-        delay(100);
+        delay(500);
     }
     if(!CAN_Init)
     {
         Serial.println("CAN Initialised Failed!");
     }
+    delay(2000);
 }
 
 void loop()
 {
     if(CAN_Init)
     {
+        unsigned long id;
         unsigned char len = 0;
         unsigned char buf[8];
-        if (CAN_MSGAVAIL == CAN.checkReceive())     // check if data coming
+        if (CAN_MSGAVAIL == CAN.checkReceive())             // check if data coming
         {         
-            CAN.readMsgBuf(&len, buf);              // read data,  len: data length, buf: data buf
-
-            unsigned long canId = CAN.getCanId();
+            CAN.readMsgBufID(&id, &len, buf);               // read data, id: CAN Message ID, len: data length, buf: data buf
 
             Serial.println("-----------------------------");
             Serial.print("Get data from ID: 0x");
-            Serial.println(canId, HEX);
+            Serial.print(id, HEX);
+            Serial.print("\t");
 
-            for(int i=0;i<len;i++)                  // print the data 
+            for(int i=0;i<len;i++)                          // print the data 
             { 
                 Serial.print(buf[i], HEX);
                 Serial.print("\t");
