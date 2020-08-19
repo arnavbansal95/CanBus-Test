@@ -10,21 +10,15 @@ void setup()
     Serial.begin(115200);
     while(!Serial);
     Serial.println("Serial Comm Initialised");
-    
-    for(int i=1;i<=18;i++)
+    Serial.print("Trying CAN Configuration: CAN_5KBPS");
+    if(!CAN_Init)
     {
-        Serial.print("Trying CAN Configuration: ");
-        Serial.println(i);
-        if(!CAN_Init)
+        if(CAN_OK == CAN.begin(CAN_5KBPS))
         {
-            if(CAN_OK == CAN.begin(i)
-            {
-                Serial.print("CAN Initialised at: ");
-                Serial.println(i);
-                CAN_Init = true;
-            }
+            Serial.print("CAN Initialised at: ");
+            Serial.println(i);
+            CAN_Init = true;
         }
-        delay(500);
     }
     if(!CAN_Init)
     {
