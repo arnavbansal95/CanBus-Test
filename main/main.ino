@@ -17,8 +17,7 @@ void setup()
         {
             delay(10);
         }
-        Serial.print("CAN Initialised at: ");
-        Serial.println(i);
+        Serial.print("CAN Initialised at: CAN_5KBPS");
         CAN_Init = true;
     }
     if(!CAN_Init)
