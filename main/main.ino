@@ -37,7 +37,7 @@ void loop()
         if (CAN_MSGAVAIL == CAN.checkReceive())             // check if data coming
         {         
             CAN.readMsgBufID(&id, &len, buf);               // read data, id: CAN Message ID, len: data length, buf: data buf
-            if(id < 20000)
+            if((id < 20000) && (id > 0))
             {
                 Serial.println("-----------------------------");
                 Serial.print("Get data from ID: 0x");
